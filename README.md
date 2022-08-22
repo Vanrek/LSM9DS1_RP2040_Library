@@ -7,11 +7,9 @@ Warning : SPI is not implemented (yet ?) !
 
 Repository Contents
 -------------------
-* **/examples** - Example sketches for the library (.ino). Run these from the Arduino IDE.
+* **/examples** - Example sketches for the library.
 * **/extras** - LSM9DS1 documentation.
 * **/src** - Source files for the library (.cpp, .h).
-* **keywords.txt** - Keywords from this library that will be highlighted in the Arduino IDE.
-* **library.properties** - General library properties for the Arduino package manager.
 
 Version History
 ---------------

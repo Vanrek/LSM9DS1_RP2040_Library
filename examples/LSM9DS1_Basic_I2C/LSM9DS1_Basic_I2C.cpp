@@ -1,15 +1,13 @@
 /*****************************************************************
-  LSM9DS1_Basic_I2C.ino
-  SFE_LSM9DS1 Library Simple Example Code - I2C Interface
-  Jim Lindblom @ SparkFun Electronics
-  Original Creation Date: April 30, 2015
-  https://github.com/sparkfun/LSM9DS1_Breakout
+  Rewriting of the arduino exemple 
+  (https://github.com/sparkfun/SparkFun_LSM9DS1_Arduino_Library/tree/master/examples/LSM9DS1_Basic_I2C) 
+  to work on a RP2040. 
 
   The LSM9DS1 is a versatile 9DOF sensor. It has a built-in
   accelerometer, gyroscope, and magnetometer. Very cool! Plus it
   functions over either SPI or I2C.
 
-  This Arduino sketch is a demo of the simple side of the
+  This sketch is a demo of the simple side of the
   SFE_LSM9DS1 library. It'll demo the following:
   How to create a LSM9DS1 object, using a constructor (global
   variables section).
@@ -26,9 +24,9 @@
   Hardware setup: This library supports communicating with the
   LSM9DS1 over either I2C or SPI. This example demonstrates how
   to use I2C. The pin-out is as follows:
-	LSM9DS1 --------- Arduino
-	 SCL ---------- SCL (A5 on older 'Duinos')
-	 SDA ---------- SDA (A4 on older 'Duinos')
+	LSM9DS1 --------- RP2040
+	 SCL ---------- SCL (GPIO9)
+	 SDA ---------- SDA (GPIO8)
 	 VDD ------------- 3.3V
 	 GND ------------- GND
   (CSG, CSXM, SDOG, and SDOXM should all be pulled high.
@@ -39,14 +37,9 @@
   (mostly) safe connecting the LSM9DS1's SCL and SDA pins
   directly to the Arduino.
 
-  Development environment specifics:
-	IDE: Arduino 1.6.3
-	Hardware Platform: SparkFun Redboard
-	LSM9DS1 Breakout Version: 1.0
-
-  This code is beerware. If you see me (or any other SparkFun
-  employee) at the local, and you've found our code helpful,
-  please buy us a round!
+  The **code** is beerware; I'm happy if it helped, 
+  but really if you've found this code helpful and you see any SparkFun employee 
+  please buy them a round (they did the hard work, I've merely done some rewriting) !
 
   Distributed as-is; no warranty is given.
 *****************************************************************/
@@ -56,7 +49,7 @@
 #include "pico/float.h"
 
 // I2C defines
-// This example will use I2C0 on GPIO8 (SDA) and GPIO9 (SCL) running at 400KHz.
+// This example will use I2C0 on GPIO8 (SDA) and GPIO9 (SCL).
 // Pins can be changed, see the GPIO function select table in the datasheet for information on GPIO assignments
 #define I2C_PORT i2c0
 #define I2C_SDA 8
